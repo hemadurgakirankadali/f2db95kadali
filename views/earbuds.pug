@@ -1,0 +1,21 @@
+extends layout
+
+
+
+block content
+
+  h1= title
+
+  br
+
+   //- let results = results ;
+  let results = [{earbuds_company:"oneplus", earbuds_colour: "blue", earbuds_cost:8000}, {earbuds_company:"applebuds", earbuds_colour: "white", earbuds_cost:10000},{earbuds_company:"boatearbuds", earbuds_colour: "black", earbuds_cost:5000}]
+
+   div(class = "container-fluid")
+
+    div(class = "row")
+
+     each item in results
+
+       div(class="col-sm-2") earbuds company:#{item.earbuds_company}, earbuds colour:#{item.earbuds_colour}, earbuds cost:#{item.earbuds_cost}
+ br
