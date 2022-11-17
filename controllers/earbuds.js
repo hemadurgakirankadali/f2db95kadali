@@ -41,7 +41,8 @@ exports.earbuds_delete = function(req, res) {
 // Handle Costume update form on PUT. 
 exports.earbuds_update_put = function(req, res) { 
     res.send('NOT IMPLEMENTED: earbuds update PUT' + req.params.id); 
-}; 
+};
+
 // VIEWS 
 // Handle a show all view 
 exports.earbuds_view_all_Page = async function(req, res) { 
