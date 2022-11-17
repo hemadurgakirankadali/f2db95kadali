@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1= title
+  if (toShow == null)
+    h2 No instance to show details 
+  else 
+    - let earbudsid = toShow._id
+    - let earbuds_company = toShow.earbuds_company
+    - let earbuds_cost = toShow.earbuds_cost
+    - let earbuds_Colour = toShow.earbuds_Colour
+    div
+    div.row
+        div(class='earbudsAttr mr-3') earbuds ID is:
+        div #{earbudsid}
+    div.row
+        div(class='earbudsAttr mr-3') earbuds company is:
+        div #{earbuds_company}
+    div.row
+        div(class='earbudsAttr mr-3') earbuds cost is:
+        div #{earbuds_cost}
+    div.row
+        div(class='earbudsAttr mr-3') earbuds colour is:
+        div #{earbuds_Colour}

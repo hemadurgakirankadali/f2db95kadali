@@ -1,0 +1,35 @@
+extends layout 
+ 
+block content 
+  h1(style="text-align: center; color: #0542D8; font-weight: bold; font-style: italic;")= title
+  div(class='container' style="text-align: center; width: 700px;")
+ 
+    form(id='EarbudsForm', action="/resource/earbuds", method="POST") 
+        div.form-group 
+            label.earbudsAttr(for='Earbuds') Earbuds company
+            input#earbuds_company(type='text', name='earbuds_company') 
+        div.form-group 
+            label.earbudsAttr(for='earbuds_cost') Earbuds Cost 
+            input#cost(type='number', name='earbuds_cost') 
+        div.form-group 
+            label.earbudsAttr(for='earbuds_Colour') Earbuds Colour
+            input#colour(type='text', name='earbuds_Colour') 
+        input(class="btn btn-info", type="submit") 
+    
+    script. 
+        document.forms['EarbudsForm'].addEventListener('submit', (event) => { 
+        event.preventDefault(); 
+        // TODO do something here to show user that form is being submitted 
+        fetch(event.target.action, { 
+            method: 'POST', 
+            body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+        }).then((resp) => { 
+            return resp.json(); // or resp.text() or whatever the server sends 
+        }).then((body) => { 
+            alert("Save succeded") 
+            // TODO handle body 
+        }).catch((error) => { 
+            // TODO handle error 
+            alert("Save failed " + error ) 
+        }); 
+        });
