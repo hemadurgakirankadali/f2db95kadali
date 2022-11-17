@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var earbuds = require("./models/earbuds");
+
 require('dotenv').config(); 
 const connectionString =  
 process.env.MONGO_CON 
@@ -12,6 +13,7 @@ mongoose.connect(connectionString,
 {useNewUrlParser: true, 
 useUnifiedTopology: true}); 
 
+//Get the default connection
 var db = mongoose.connection;	
 //Bind connection to error event	
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));	
@@ -24,7 +26,7 @@ var usersRouter = require('./routes/users');
 var earbudsRouter = require('./routes/earbuds');
 var gridbuildRouter= require('./routes/gridbuild');
 var selctorRouter= require('./routes/selector');
-//var resourceRouter= require('./routes/resource');
+var resourceRouter= require('./routes/resource');
 
 var app = express();
 
@@ -43,7 +45,7 @@ app.use('/users', usersRouter);
 app.use('/earbuds', earbudsRouter);
 app.use('/gridbuild', gridbuildRouter);
 app.use('/selector', selctorRouter);
-//app.use('/resource', resourceRouter); 
+app.use('/resource', resourceRouter);
 
 
 // catch 404 and forward to error handler

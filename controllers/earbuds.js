@@ -1,4 +1,5 @@
-var earbuds = require('../models/earbuds'); 
+var earbuds = require('../models/earbuds');
+
 // List of all Costumes 
 exports.earbuds_list = async function(req, res) { 
     try{ 
@@ -9,12 +10,12 @@ exports.earbuds_list = async function(req, res) {
         res.status(500); 
         res.send(`{"error": ${err}}`); 
     }   
-}; 
+    };
  
 // List of all pets 
-exports.earbuds_list = function(req, res) { 
-    res.send('NOT IMPLEMENTED: earbuds list'); 
-}; 
+//exports.earbuds_list = function(req, res) { 
+    //res.send('NOT IMPLEMENTED: earbuds list'); 
+//}; 
  
 // for a specific pets. 
 exports.earbuds_detail = function(req, res) { 
