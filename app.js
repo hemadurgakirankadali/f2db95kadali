@@ -7,6 +7,20 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var earbuds = require("./models/earbuds");
 
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+  Account.findOne({ username: username }, function (err, user) {
+  if (err) { return done(err); }
+  if (!user) {
+  return done(null, false, { message: 'Incorrect username.' });
+  }
+  if (!user.validPassword(password)) {
+  return done(null, false, { message: 'Incorrect password.' });
+  }
+  return done(null, user);
+  });
+  }));
+
 require('dotenv').config(); 
 const connectionString =  
 process.env.MONGO_CON 
@@ -62,19 +76,7 @@ app.use('/earbuds', earbudsRouter);
 app.use('/gridbuild', gridbuildRouter);
 app.use('/selector', selctorRouter);
 app.use('/resource', resourceRouter);
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-  Account.findOne({ username: username }, function (err, user) {
-  if (err) { return done(err); }
-  if (!user) {
-  return done(null, false, { message: 'Incorrect username.' });
-  }
-  if (!user.validPassword(password)) {
-  return done(null, false, { message: 'Incorrect password.' });
-  }
-  return done(null, user);
-  });
-  }));
+
 
 
 // catch 404 and forward to error handler

@@ -4,7 +4,7 @@ var router = express.Router();
 // Require controller modules. 
 var api_controller = require('../controllers/api'); 
 var earbuds_controller = require('../controllers/earbuds'); 
- 
+const earbuds = require('../models/earbuds');
 /// API ROUTE /// 
  
 // GET resources base. 

@@ -97,25 +97,25 @@ exports.earbuds_detail = async function(req, res) {
     }
     };
 
-    // Handle Costume update form on PUT.
-exports.earbuds_update_put = async function(req, res) {
-console.log(`update on id ${req.params.id} with body
-${JSON.stringify(req.body)}`)
-try {
-let toUpdate = await earbuds.findById( req.params.id)
-// Do updates of properties
-if(req.body.earbuds_company)
-toUpdate.earbuds_company = req.body.earbuds_company;
-if(req.body.earbuds_cost) toUpdate.earbuds_cost = req.body.earbuds_cost;
-if(req.body.earbuds_Colour) toUpdate.earbuds_Colour = req.body.earbuds_Colour;
-let result = await toUpdate.save();
-console.log("Sucess " + result)
-res.send(result)
-} catch (err) {
-res.status(500)
-res.send(`{"error": ${err}: Update for id ${req.params.id}
-failed`);
-}
+// Handle earbuds update form on PUT.
+exports.earbuds_update_put = async function (req, res) {
+    console.log(`update on id ${req.params.id} with body
+    ${JSON.stringify(req.body)}`)
+    try {
+        let toUpdate = await earbuds.findById(req.params.id)
+        // Do updates of properties
+        if (req.body.earbuds_company)
+            toUpdate.earbuds_company = req.body.earbuds_company;
+        if (req.body.earbuds_cost) toUpdate.earbuds_cost = req.body.earbuds_cost;
+        if (req.body.earbuds_colour) toUpdate.earbuds_colour = req.body.earbuds_colour;
+        let result = await toUpdate.save();
+        console.log("Sucess " + result)
+        res.send(result)
+    } catch (err) {
+        console.log('Came to error')
+        res.status(500)
+        res.send(`{"error": "Values are not Valid failed"}`);
+    }
 };
 
 // Handle a show one view with id specified by query
